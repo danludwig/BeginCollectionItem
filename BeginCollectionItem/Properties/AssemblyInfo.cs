@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BeginCollectionItem Html Helper")]
-[assembly: AssemblyDescription("This Html Helper leverages the MVC2+ default model binder to materialize viewmodel collection properties from an HTTP POST.")]
+[assembly: AssemblyDescription("This Html Helper leverages the default model binder in ASP.NET MVC 2 and higher to materialize viewmodel collection properties from an HTTP POST.")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
