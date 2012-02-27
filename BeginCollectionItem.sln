@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeginCollectionItem", "BeginCollectionItem\BeginCollectionItem.csproj", "{CF17966C-80C2-4ABE-BD0B-F58AEF0DDB05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{85C16142-EC9A-460E-A3DF-C085C71984D8}"
+	ProjectSection(SolutionItems) = preProject
+		BeginCollectionItem.vsmdi = BeginCollectionItem.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A7E4D821-B98F-4322-86CA-00C73A74772C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeginCollectionItem.Tests", "BeginCollectionItem.Tests\BeginCollectionItem.Tests.csproj", "{4EB8623B-A836-42D1-B90C-00886750101B}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = BeginCollectionItem.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF17966C-80C2-4ABE-BD0B-F58AEF0DDB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF17966C-80C2-4ABE-BD0B-F58AEF0DDB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF17966C-80C2-4ABE-BD0B-F58AEF0DDB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF17966C-80C2-4ABE-BD0B-F58AEF0DDB05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB8623B-A836-42D1-B90C-00886750101B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB8623B-A836-42D1-B90C-00886750101B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB8623B-A836-42D1-B90C-00886750101B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB8623B-A836-42D1-B90C-00886750101B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
