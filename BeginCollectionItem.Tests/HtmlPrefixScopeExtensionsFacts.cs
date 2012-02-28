@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
-using HtmlHelpers.BeginCollectionItem;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NUnit.Framework;
 using Should;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BeginCollectionItem.Tests
+namespace HtmlHelpers.BeginCollectionItem.Tests
 {
     // ReSharper disable UnusedMember.Global
     public static class HtmlPrefixScopeExtensionsFacts
     // ReSharper restore UnusedMember.Global
     {
-        [TestFixture]
-        [TestClass]
+        [TestFixture, TestClass]
         public class TheBeginCollectionItemMethod
         {
-            [Test]
-            [TestMethod]
+            [Test, TestMethod]
             public void WritesCollectionIndexHiddenInput_WhenThereIsNothingInRequestData()
             {
                 const string collectionName = "CollectionName";
@@ -52,8 +49,7 @@ namespace BeginCollectionItem.Tests
                 text.ShouldContain(@""" />");
             }
 
-            [Test]
-            [TestMethod]
+            [Test, TestMethod]
             public void WritesExpectedCollectionIndexHiddenInput_WhenThereIsAnIndexInRequestData()
             {
                 const string collectionName = "CollectionName";
@@ -90,12 +86,10 @@ namespace BeginCollectionItem.Tests
             }
         }
 
-        [TestFixture]
-        [TestClass]
+        [TestFixture, TestClass]
         public class TheBeginHtmlFieldPrefixScopeMethod
         {
-            [Test]
-            [TestMethod]
+            [Test, TestMethod]
             public void Returns_IDisposable()
             {
                 var viewContext = new ViewContext();
@@ -109,8 +103,7 @@ namespace BeginCollectionItem.Tests
                 }
             }
 
-            [Test]
-            [TestMethod]
+            [Test, TestMethod]
             public void Wraps_HtmlHelper_ViewData_TemplateInfo()
             {
                 var viewContext = new ViewContext();
@@ -128,8 +121,7 @@ namespace BeginCollectionItem.Tests
                 }
             }
 
-            [Test]
-            [TestMethod]
+            [Test, TestMethod]
             public void Changes_HtmlHelper_ViewData_TemplateInfo_HtmlFieldPrefix_WhenUsed()
             {
                 const string nextFieldPrefix = "InnerItems";
@@ -150,8 +142,7 @@ namespace BeginCollectionItem.Tests
                 }
             }
 
-            [Test]
-            [TestMethod]
+            [Test, TestMethod]
             public void Restores_HtmlHelper_ViewData_TemplateInfo_HtmlFieldPrefix_WhenDisposed()
             {
                 const string nextFieldPrefix = "InnerItems";

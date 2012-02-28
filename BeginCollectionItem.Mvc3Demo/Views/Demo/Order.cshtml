@@ -1,0 +1,65 @@
+﻿@model BeginCollectionItem.Mvc3Demo.Models.OrderModel
+@{
+    ViewBag.Title = "BeginCollectionItem Demo";
+}
+<h2>
+    BeginCollectionItem Demo
+</h2>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Order Information</legend>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Number)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.Number)
+            @Html.ValidationMessageFor(m => m.Number)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.Date)
+            @Html.ValidationMessageFor(m => m.Date)
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Order Items</legend>
+        <ul data-demo-ajax="list-order-items">
+            @foreach (var item in Model.Items)
+            {
+                <li>@Html.Partial(MVC.Demo.Views._OrderItem, item)</li>
+            }
+        </ul>
+        <p>
+            <a href="#" data-demo-ajax="add-order-item" data-demo-ajax-url="@Url.Action(MVC.Demo.OrderItem())">Add Order Item</a>
+        </p>
+    </fieldset>
+    <p>
+        @Html.EditorFor(m => m.Id)
+        <input type="submit" value="Submit Order" />
+    </p>
+}
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $('a[data-demo-ajax=add-order-item]').on('click', function () {
+                var url = $(this).data('demo-ajax-url');
+                var ul = $('ul[data-demo-ajax=list-order-items]');
+                $.ajax({
+                    url: url,
+                    success: function (html) {
+                        $(html).appendTo(ul).wrap('<li />');
+                        var form = ul.closest('form');
+                        form.removeData('validator');
+                        form.removeData('unobtrusiveValidation');
+                        $.validator.unobtrusive.parse(form);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+}

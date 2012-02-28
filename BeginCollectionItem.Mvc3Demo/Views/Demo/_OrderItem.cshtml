@@ -1,0 +1,27 @@
+﻿@using HtmlHelpers.BeginCollectionItem
+@model BeginCollectionItem.Mvc3Demo.Models.OrderModel.OrderItemModel
+@{
+    if (ViewContext.FormContext == null)
+    {
+        ViewContext.FormContext = new FormContext();
+    }
+}
+<div>
+    @using (Html.BeginCollectionItem("Items"))
+    {
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Product)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.Product.Id, Model.Product.Options, Model.Product.Id.HasValue ? null : "[Select a product]")
+            @Html.ValidationMessageFor(m => m.Product.Id)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.Quantity)
+            @Html.ValidationMessageFor(m => m.Quantity)
+        </div>
+    }
+</div>

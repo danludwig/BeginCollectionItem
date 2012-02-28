@@ -9,7 +9,7 @@
     <ProjectGuid>{4EB8623B-A836-42D1-B90C-00886750101B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BeginCollectionItem.Tests</RootNamespace>
+    <RootNamespace>HtmlHelpers.BeginCollectionItem.Tests</RootNamespace>
     <AssemblyName>BeginCollectionItem.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
