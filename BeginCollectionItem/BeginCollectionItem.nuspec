@@ -14,6 +14,6 @@
         <tags>MVC, HtmlHelper, BeginCollectionItem</tags>
     </metadata>
     <files>
-        <file src="content\*.*" target="content\" />
+        <file src="content\Views\*.*" target="content\Views\" />
     </files>
 </package>
