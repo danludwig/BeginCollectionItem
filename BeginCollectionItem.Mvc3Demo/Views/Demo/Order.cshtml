@@ -26,12 +26,9 @@
     </fieldset>
     <fieldset>
         <legend>Order Items</legend>
-        <ul data-demo-ajax="list-order-items">
-            @foreach (var item in Model.Items)
-            {
-                <li>@Html.Partial(MVC.Demo.Views._OrderItem, item)</li>
-            }
-        </ul>
+        <div data-demo-ajax="list-order-items">
+            @Html.EditorFor(x => x.Items)
+        </div>
         <p>
             <a href="#" data-demo-ajax="add-order-item" data-demo-ajax-url="@Url.Action(MVC.Demo.OrderItem())">Add Order Item</a>
         </p>
@@ -47,7 +44,7 @@
         $(function () {
             $('a[data-demo-ajax=add-order-item]').on('click', function () {
                 var url = $(this).data('demo-ajax-url');
-                var ul = $('ul[data-demo-ajax=list-order-items]');
+                var ul = $('div[data-demo-ajax=list-order-items] ul');
                 $.ajax({
                     url: url,
                     success: function (html) {

@@ -1,0 +1,13 @@
+﻿@using HtmlHelpers.BeginCollectionItem
+
+<ul>                                 
+    @foreach (object item in Model)
+    {
+        <li>
+            @using (Html.BeginCollectionItem(Html.ViewData.TemplateInfo.HtmlFieldPrefix))
+            {
+                @Html.EditorFor(_ => item, null, "")
+            }
+        </li>
+    }
+</ul>

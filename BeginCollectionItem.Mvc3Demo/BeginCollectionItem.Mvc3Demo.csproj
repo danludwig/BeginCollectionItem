@@ -203,6 +203,8 @@
     <Content Include="Views\Demo\Order.cshtml" />
     <Content Include="Views\Demo\_OrderItem.cshtml" />
     <Content Include="Views\Demo\OrderSubmitted.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
+    <Content Include="Views\Demo\EditorTemplates\OrderItemModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
