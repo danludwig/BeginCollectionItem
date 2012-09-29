@@ -13,7 +13,4 @@
         <releaseNotes></releaseNotes>
         <tags>MVC, HtmlHelper, BeginCollectionItem</tags>
     </metadata>
-    <files>
-        <file src="content\Views\*.*" target="content\Views\" />
-    </files>
 </package>
