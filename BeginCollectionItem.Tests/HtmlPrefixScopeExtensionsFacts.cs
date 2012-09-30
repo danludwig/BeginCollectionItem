@@ -29,10 +29,8 @@ namespace HtmlHelpers.BeginCollectionItem.Tests
                 httpContext.Setup(p => p.Request).Returns(httpRequest.Object);
 
                 var viewContext = new ViewContext();
-                var viewContextWriter = new Mock<TextWriter>();
-                var text = string.Empty;
-                viewContextWriter.Setup(m => m.WriteLine(It.IsAny<string>())).Callback((string s) => text += s);
-                viewContext.Writer = viewContextWriter.Object;
+                var writer = new StringWriter();
+                viewContext.Writer = writer;
 
                 var html = new HtmlHelper(viewContext, new FakeViewDataContainer());
                 viewContext.HttpContext = httpContext.Object;
@@ -42,7 +40,9 @@ namespace HtmlHelpers.BeginCollectionItem.Tests
                     result.ShouldNotBeNull();
                 }
 
+                var text = writer.ToString();
                 text.ShouldNotBeNull();
+                text.ShouldNotBeEmpty();
                 text.ShouldStartWith(string.Format(
                     @"<input type=""hidden"" name=""{0}.index"" autocomplete=""off"" value=""",
                         collectionName));
@@ -66,10 +66,8 @@ namespace HtmlHelpers.BeginCollectionItem.Tests
                 httpContext.Setup(p => p.Request).Returns(httpRequest.Object);
 
                 var viewContext = new ViewContext();
-                var viewContextWriter = new Mock<TextWriter>();
-                var text = string.Empty;
-                viewContextWriter.Setup(m => m.WriteLine(It.IsAny<string>())).Callback((string s) => text += s);
-                viewContext.Writer = viewContextWriter.Object;
+                var writer = new StringWriter();
+                viewContext.Writer = writer;
 
                 var html = new HtmlHelper(viewContext, new FakeViewDataContainer());
                 viewContext.HttpContext = httpContext.Object;
@@ -79,8 +77,10 @@ namespace HtmlHelpers.BeginCollectionItem.Tests
                     result.ShouldNotBeNull();
                 }
 
+                var text = writer.ToString();
                 text.ShouldNotBeNull();
-                text.ShouldEqual(string.Format(
+                text.ShouldNotBeEmpty();
+                text.ShouldStartWith(string.Format(
                     @"<input type=""hidden"" name=""{0}.index"" autocomplete=""off"" value=""{1}"" />",
                         collectionName, index0));
             }
