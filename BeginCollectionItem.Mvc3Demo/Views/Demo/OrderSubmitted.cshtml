@@ -8,3 +8,20 @@
 <p>
     Your order has been submitted.
 </p>
+<p>
+    Order Number: @Model.Number
+</p>
+<p>
+    Order Date: @Model.Date
+</p>
+<ul>
+    @foreach(var item in Model.Items)
+    {
+        <li>
+            Item: @item.Product.Options.Single(o => o.Value == item.Product.Id.ToString()).Text
+            <br/>
+            Quantity: @item.Quantity
+        </li>
+    }
+</ul>
+<a href="@Url.Action("Order", "Demo")">Submit another order</a>

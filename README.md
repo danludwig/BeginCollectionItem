@@ -29,6 +29,11 @@ More general usage of this helper is [well documented on the web](https://www.go
 
 ## Changelog
 
+Release 1.2
+ - Install a `Collection.cshtml` editor template for use with the helper.
+ - Update demo project to use `Collection.cshtml` editor template.
+ - Optimize `TextWriter.WriteLine` to use its own string formatting overloads.
+
 Release 1.1
  - Moved the default web.config transform from the root web.config to the Views web.config.
  - Corrected namespace declaration and documentation to indicate the correct namespace, HtmlHelpers.BeginItemCollection.

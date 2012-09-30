@@ -48,7 +48,7 @@
                 $.ajax({
                     url: url,
                     success: function (html) {
-                        $(html).appendTo(ul).wrap('<li />');
+                        $('<li />').html(html).appendTo(ul);
                         var form = ul.closest('form');
                         form.removeData('validator');
                         form.removeData('unobtrusiveValidation');

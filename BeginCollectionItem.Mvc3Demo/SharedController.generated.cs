@@ -31,6 +31,11 @@ namespace T4MVC {
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LogOnPartial = "~/Views/Shared/_LogOnPartial.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
+            static readonly _EditorTemplates s_EditorTemplates = new _EditorTemplates();
+            public _EditorTemplates EditorTemplates { get { return s_EditorTemplates; } }
+            public partial class _EditorTemplates{
+                public readonly string Collection = "Collection";
+            }
         }
     }
 

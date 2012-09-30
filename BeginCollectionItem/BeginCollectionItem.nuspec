@@ -4,13 +4,13 @@
         <id>$id$</id>
         <version>$version$</version>
         <title>BeginCollectionItem HtmlHelper</title>
-        <authors>Authored by Steve Sanderson, NuGet Package by Dan Ludwig</authors>
+        <authors>Authored by Steve Sanderson, NuGet Package by Dan Ludwig and hazzik</authors>
         <licenseUrl>https://github.com/danludwig/BeginCollectionItem</licenseUrl>
         <projectUrl>https://github.com/danludwig/BeginCollectionItem</projectUrl>
         <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
-        <releaseNotes></releaseNotes>
+        <releaseNotes>Updated project to install a shared Collection.cshtml editor template for use with the BeginCollectionItem HTML Helper.</releaseNotes>
         <tags>MVC, HtmlHelper, BeginCollectionItem</tags>
     </metadata>
 </package>

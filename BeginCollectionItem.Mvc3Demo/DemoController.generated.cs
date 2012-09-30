@@ -68,6 +68,11 @@ namespace BeginCollectionItem.Mvc3Demo.Controllers {
             public readonly string _OrderItem = "~/Views/Demo/_OrderItem.cshtml";
             public readonly string Order = "~/Views/Demo/Order.cshtml";
             public readonly string OrderSubmitted = "~/Views/Demo/OrderSubmitted.cshtml";
+            static readonly _EditorTemplates s_EditorTemplates = new _EditorTemplates();
+            public _EditorTemplates EditorTemplates { get { return s_EditorTemplates; } }
+            public partial class _EditorTemplates{
+                public readonly string OrderItemModel = "OrderItemModel";
+            }
         }
     }
 

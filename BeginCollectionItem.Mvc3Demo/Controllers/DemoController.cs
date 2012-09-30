@@ -22,14 +22,14 @@ namespace BeginCollectionItem.Mvc3Demo.Controllers
         [HttpPost]
         public virtual ViewResult Order(OrderModel model)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    return View(Views.OrderSubmitted, model);
-            //}
             var productOptions = ProductOptions();
             foreach (var item in model.Items)
             {
                 item.Product.Options = productOptions;
+            }
+            if (ModelState.IsValid)
+            {
+                return View(Views.OrderSubmitted, model);
             }
             return View(model);
         }
