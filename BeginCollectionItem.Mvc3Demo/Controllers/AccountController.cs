@@ -108,6 +108,7 @@ namespace BeginCollectionItem.Mvc3Demo.Controllers
                 try
                 {
                     MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
+                    if (currentUser == null) throw new InvalidOperationException(string.Format("User '{0}' does not exist", User.Identity.Name));
                     changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
                 }
                 catch (Exception)
