@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Web.Mvc;
 using System.Web;
 using System.Collections.Generic;
@@ -11,13 +12,18 @@ namespace HtmlHelpers.BeginCollectionItem
 
         public static IDisposable BeginCollectionItem(this HtmlHelper html, string collectionName)
         {
+            return BeginCollectionItem(html, collectionName, html.ViewContext.Writer);
+        }
+
+        public static IDisposable BeginCollectionItem(this HtmlHelper html, string collectionName, TextWriter writer)
+        {
             var idsToReuse = GetIdsToReuse(html.ViewContext.HttpContext, collectionName);
             var itemIndex = idsToReuse.Count > 0 ? idsToReuse.Dequeue() : Guid.NewGuid().ToString();
 
             // autocomplete="off" is needed to work around a very annoying Chrome behaviour
             // whereby it reuses old values after the user clicks "Back", which causes the
             // xyz.index and xyz[...] values to get out of sync.
-            html.ViewContext.Writer.WriteLine(
+            writer.WriteLine(
                 "<input type=\"hidden\" name=\"{0}.index\" autocomplete=\"off\" value=\"{1}\" />",
                 collectionName, html.Encode(itemIndex));
 
