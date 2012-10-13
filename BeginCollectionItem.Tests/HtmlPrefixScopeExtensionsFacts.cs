@@ -87,6 +87,78 @@ namespace HtmlHelpers.BeginCollectionItem.Tests
         }
 
         [TestFixture, TestClass]
+        public class TheBeginCollectionItemMethodOverload
+        {
+            [Test, TestMethod]
+            public void WritesCollectionIndexHiddenInput_WhenThereIsNothingInRequestData()
+            {
+                const string collectionName = "CollectionName";
+                var httpContext = new Mock<HttpContextBase>();
+                var httpContextItems = new Dictionary<string, object>();
+                httpContext.Setup(p => p.Items).Returns(httpContextItems);
+
+                var httpRequest = new Mock<HttpRequestBase>();
+                httpContext.Setup(p => p.Request).Returns(httpRequest.Object);
+
+                var viewContext = new ViewContext();
+                var writer = new StringWriter();
+                viewContext.Writer = writer;
+
+                var html = new HtmlHelper(viewContext, new FakeViewDataContainer());
+                viewContext.HttpContext = httpContext.Object;
+
+                using (var result = html.BeginCollectionItem(collectionName, html.ViewContext.Writer))
+                {
+                    result.ShouldNotBeNull();
+                }
+
+                var text = writer.ToString();
+                text.ShouldNotBeNull();
+                text.ShouldNotBeEmpty();
+                text.ShouldStartWith(string.Format(
+                    @"<input type=""hidden"" name=""{0}.index"" autocomplete=""off"" value=""",
+                        collectionName));
+                text.ShouldContain(@""" />");
+            }
+
+            [Test, TestMethod]
+            public void WritesExpectedCollectionIndexHiddenInput_WhenThereIsAnIndexInRequestData()
+            {
+                const string collectionName = "CollectionName";
+                var index0 = Guid.NewGuid();
+                var index1 = Guid.NewGuid();
+                var indexes = string.Format("{0},{1}", index0, index1);
+                var httpContext = new Mock<HttpContextBase>();
+                var httpContextItems = new Dictionary<string, object>();
+                httpContext.Setup(p => p.Items).Returns(httpContextItems);
+
+                var httpRequest = new Mock<HttpRequestBase>();
+                httpRequest.Setup(i => i[It.Is<string>(s => s == string.Format("{0}.index", collectionName))])
+                    .Returns(indexes);
+                httpContext.Setup(p => p.Request).Returns(httpRequest.Object);
+
+                var viewContext = new ViewContext();
+                var writer = new StringWriter();
+                viewContext.Writer = writer;
+
+                var html = new HtmlHelper(viewContext, new FakeViewDataContainer());
+                viewContext.HttpContext = httpContext.Object;
+
+                using (var result = html.BeginCollectionItem(collectionName, html.ViewContext.Writer))
+                {
+                    result.ShouldNotBeNull();
+                }
+
+                var text = writer.ToString();
+                text.ShouldNotBeNull();
+                text.ShouldNotBeEmpty();
+                text.ShouldStartWith(string.Format(
+                    @"<input type=""hidden"" name=""{0}.index"" autocomplete=""off"" value=""{1}"" />",
+                        collectionName, index0));
+            }
+        }
+
+        [TestFixture, TestClass]
         public class TheBeginHtmlFieldPrefixScopeMethod
         {
             [Test, TestMethod]
